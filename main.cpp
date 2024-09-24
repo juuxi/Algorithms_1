@@ -5,13 +5,12 @@
 
 int main()
 {
-    List<int> a;
-    a.push_front(1);
-    a.push_back(7);
-    a.push_back(5);
-    std::cout << a.get_val(1) << std::endl;
-    std::cout << a.get_val(2) << std::endl;
-    a.remove(2);
-    std::cout << a.get_val(2) << std::endl;
+    Vector<int> v(5);
+    v.add(1, 10);
+    v.add(2, 15);
+    std::cout << v.get_value(2) << std::endl;
+    v.add(3, 24);
+    v.remove(2);
+    std::cout << v.get_value(2) << std::endl;
     return 0;
 }
