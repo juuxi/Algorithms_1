@@ -5,12 +5,11 @@
 
 int main()
 {
-    Vector<int> v(5);
-    v.add(1, 10);
-    v.add(2, 15);
-    std::cout << v.get_value(2) << std::endl;
-    v.add(3, 24);
-    v.remove(2);
-    std::cout << v.get_value(2) << std::endl;
+    Stack<char> s;
+    s.push_front('h');
+    s.push_front('1');
+    std::cout << s.get_value() << std::endl;
+    s.pop_front();
+    std::cout << s.get_value() << std::endl;
     return 0;
 }
