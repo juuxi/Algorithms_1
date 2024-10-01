@@ -19,6 +19,8 @@ bool incl (char token, char* arr, int size)
 
 bool is_op2_higher_priority(char op1, char op2)
 {
+    if (op2 == '^' && op1 == '^')
+        return false;
     if (op2 == '^')
         return true;
     if (op1 == '^')
@@ -61,7 +63,7 @@ int main()
                     main_stack.push_front(token);
                 if (incl(token, operators, OP_SIZE))
                 {
-                    while(!main_stack.is_empty() && is_op2_higher_priority(token, main_stack.get_value()))
+                    while(!main_stack.is_empty() &&  incl(main_stack.get_value(), operators, OP_SIZE) && is_op2_higher_priority(token, main_stack.get_value()))
                     {
                         std::cout << main_stack.get_value();
                         main_stack.pop_front();
@@ -84,7 +86,10 @@ int main()
                     }
                     if (incl(main_stack.get_value(), functions, FUNC_SIZE))
                     {
-                        std::cout << main_stack.get_value();
+                        if (main_stack.get_value() == 's')
+                            std::cout << "sin";
+                        if (main_stack.get_value() == 'c')
+                            std::cout << "cos";
                         main_stack.pop_front();
                     }
                     if (main_stack.get_value() == '(')
@@ -101,7 +106,12 @@ int main()
                 }
                 else 
                 {
-                    std::cout << main_stack.get_value();
+                    if (main_stack.get_value() == 's')
+                        std::cout << "sin";
+                    else if (main_stack.get_value() == 'c')
+                        std::cout << "cos";
+                    else 
+                        std::cout << main_stack.get_value();
                     main_stack.pop_front();
                 }
             }
