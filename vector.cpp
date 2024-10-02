@@ -11,6 +11,7 @@ public:
     Vector(size_t _size){arr = new V[_size]; full_size = _size; size = 0;}
     void add(size_t, V);
     void remove(size_t);
+    size_t get_size() {return size;}
     V get_value(size_t);
 private:
     void ensure_capacity();
@@ -29,7 +30,7 @@ void Vector<V>::add(size_t _pos, V _value)
 template<typename V>
 void Vector<V>::remove(size_t _pos)
 {
-    for (int i = _pos - 1; i < size; i++)
+    for (int i = _pos - 1; i < full_size; i++)
         arr[i] = arr[i+1];
     size--;
 }
